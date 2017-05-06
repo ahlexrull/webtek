@@ -11,20 +11,47 @@
 <nav class="navbar-default navbar-side" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
-        <li class="text-center">
-            <?php echo '<img  class="user-image img-responsive" src="data:image/png;base64,' . base64_encode($print["user_image"]) . '">'; ?>
+
+        <li>
+            <a href="index.php"><i class="fa fa-wrench fa-fw"></i> Dashboard<span class="fa arrow"></span></a>
         </li>
         <li>
-            <a href="pending.php"><i class="fa fa-book fa-3x"></i> Pending</a>
+            <a href="#"><i class="fa fa-wrench fa-fw"></i> Requests<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+                <li>
+                    <a href="pending.php"><i class="fa fa-book fa-3x"></i> Pending</a>
+                </li>
+                <li>
+                    <a href="onGoing.php"><i class="fa fa-book fa-3x"></i> On-Going</a>
+                </li>
+                <li>
+                    <a  href="finished.php"><i class="fa fa-medkit fa-3x"></i> Finished</a>
+                </li>
+            </ul>
         </li>
+
         <li>
-            <a  href="finished.php"><i class="fa fa-medkit fa-3x"></i> Finished</a>
+            <a href="#"><i class="fa fa-wrench fa-fw"></i> Feedback<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+                <li>
+                    <a href="new-feedback.php"><i class="fa fa-book fa-3x"></i> New Feedback</a>
+                </li>
+                <li>
+                    <a  href="old-feedback.php"><i class="fa fa-medkit fa-3x"></i> Old Feedback</a>
+                </li>
+            </ul>
         </li>
+            <a href="#"><i class="fa fa-wrench fa-fw"></i> Profile<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+                <li>
+                    <a href="edit-profile.php"><i class="fa fa-book fa-3x"></i> Edit Profile</a>
+                </li>
+                <li>
+                    <a  href="view-profile.php"><i class="fa fa-medkit fa-3x"></i> View Profile</a>
+                </li>
+            </ul>
         <li>
-            <a  href="feedback.php"><i class="glyphicon glyphicon-tint fa-3x"></i>Feedback</a>
-        </li>
-        <li>
-            <a  href="editProfile.php"><i class="glyphicon glyphicon-tint fa-3x"></i>Edit Profile</a>
+            
         </li>           
         </ul>
     </div>
