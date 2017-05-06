@@ -53,24 +53,43 @@
                 </div>
                 <div class="jumbotron">
 
-                   <?php
-                    require_once 'fragments/connection.php';
-                    $query = $pdo->prepare("SELECT * FROM service_request natural join pet_service where status = '01'");
-                    $query->execute();
-                    $result = $query->fetchAll();
-                    ?>  
-
-                    <div class="panel-heading">
-                           Finished Requests as of <?php echo date("Y-m-d") ?> 
+                <div class="panel-heading">
+                        
+                        <!--Start of table -->
+                        Finished Requests as of <?php echo date("Y-m-d") ?> 
                         </div>
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example" name="anothercontent">
                                     <thead>
-                                        <tr>
-                                            <th>Request Name</th>
-                                            <th>Start of Service</th>
-                                            <th>End of Service</th>
-                                            <th>Amount</th>
-                                        </tr>
+                                        
+                   <?php
+                         require_once 'fragments/connection.php';
+
+                         $usr = $_SESSION['username'];
+
+                        $query = $pdo->prepare("SELECT b.username AS sp_username, a.username AS cust_username, request_status, pet_service.service_name, start_servicing, end_servicing,  service_price FROM service_request INNER JOIN user_account AS b ON service_request.account_id = b.account_id  INNER JOIN user_account AS a ON service_request.cust_id = a.account_id  INNER JOIN pet_service ON service_request.service_id = pet_service.service_id WHERE request_status = 02 AND b.username = '$usr'"); 
+                        $query->execute();
+                        $result = $query->fetchAll();
+                        
+                        echo "<tr>";
+                        echo "<th> Date </th>";
+                        echo "<th>Customer</th>";
+                        echo "<th> Service Name </th>";
+                        echo "<th>Amount</th>";
+                        echo "<th>More Details</th>";
+                        echo "</tr>";
+
+                        foreach($result as $query){
+                            echo "<tr>";
+                            echo "<td>" . $query['start_servicing'] . "</td>";
+                            echo "<td>" . $query['cust_username'] . "</td>";
+                            echo "<td>" . $query['service_name'] . "</td>";
+                            echo "<td>" . $query['service_price'] . "</td>";
+                            echo "<td>" . "<button onclick='document.getElementById('reply_modal').style.display='block''class='button'>Details</button>" . "</td>"; 
+                            echo "</tr>";
+                        }
+                    ?>
+
+                    
                                     </thead>
                                     <tbody>
                                     </tbody>
