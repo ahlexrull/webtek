@@ -31,6 +31,7 @@ function echoActiveClassIfRequestMatches($requestUri)
 
 ?>
     <div id="wrapper">
+       
         <?php include 'fragments/page-head.php'; ?>
            <!-- /. NAV TOP  -->
         <?php include 'fragments/sidebar-nav.php'; ?>

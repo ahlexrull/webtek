@@ -15,7 +15,7 @@
     //if($errMsg == ''){
         if($username && $password){
             $connect = new PDO("mysql:host=localhost;dbname=webtek-final;charset=utf8", "root", "");
-    $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $records = $connect->prepare("SELECT * FROM user_account WHERE username= '$username' AND password='$password'");
             $numberrow = $connect->query("SELECT account_id, username, password FROM user_account ");
             
@@ -26,12 +26,14 @@
             
             if($counter != 0){
                 while($rows = $records->fetch(PDO::FETCH_ASSOC)){
+                    $user_id = $rows["account_id"];
                     $dbuser = $rows["username"];
                     $dbpass = $rows["password"];
 
                     
                     if($username == $dbuser && $password == $dbpass ) {
                         session_start();
+                        $_SESSION["user_id"]=$user_id;
                         $_SESSION["username"]=$dbuser;
                         header("location: pages/index.php");
                     }else{
