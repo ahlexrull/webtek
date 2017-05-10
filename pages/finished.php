@@ -58,43 +58,34 @@
                         Finished Requests as of <?php echo date("Y-m-d") ?> 
                         </div>
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example" name="anothercontent">
-                                    <thead>
-                                        
-                   <?php
-                         require_once 'fragments/connection.php';
+                                        <?php
+                                             require_once 'fragments/connection.php';
 
-                         $usr = $_SESSION['username'];
+                                             $usr = $_SESSION['username'];
 
-                        $query = $pdo->prepare("SELECT b.username AS sp_username, a.username AS cust_username, request_status, pet_service.service_name, start_servicing, end_servicing,  service_price FROM service_request INNER JOIN user_account AS b ON service_request.account_id = b.account_id  INNER JOIN user_account AS a ON service_request.cust_id = a.account_id  INNER JOIN pet_service ON service_request.service_id = pet_service.service_id WHERE request_status = 02 AND b.username = '$usr'"); 
-                        $query->execute();
-                        $result = $query->fetchAll();
-                        
-                        echo "<tr>";
-                        echo "<th> Date </th>";
-                        echo "<th>Customer</th>";
-                        echo "<th> Service Name </th>";
-                        echo "<th>Amount</th>";
-                        echo "<th>More Details</th>";
-                        echo "</tr>";
+                                            $query = $pdo->prepare("SELECT pet_service.service_name, start_servicing, end_servicing,  service_price FROM service_request inner join pet_service using (service_id) WHERE request_status = 04"); 
+                                            $query->execute();
+                                            $result = $query->fetchAll();
+                                            
+                                            echo "<tr>";
+                                            echo "<th>Date Started</th>";
+                                            echo "<th>Date Finished</th>";
+                                            echo "<th> Service Name </th>";
+                                            echo "<th>Amount</th>";
+                                            echo "</tr>";
 
-                        foreach($result as $query){
-                            echo "<tr>";
-                            echo "<td>" . $query['start_servicing'] . "</td>";
-                            echo "<td>" . $query['cust_username'] . "</td>";
-                            echo "<td>" . $query['service_name'] . "</td>";
-                            echo "<td>" . $query['service_price'] . "</td>";
-                            echo "<td>" . "<button onclick='document.getElementById('reply_modal').style.display='block''class='button'>Details</button>" . "</td>"; 
-                            echo "</tr>";
-                        }
-                    ?>
+                                            foreach($result as $query){
+                                                echo "<tr>";
+                                                echo "<td>" . $query['start_servicing'] . "</td>";
+                                                echo "<td>" . $query['end_servicing'] . "</td>";
+                                                echo "<td>" . $query['service_name'] . "</td>";
+                                                echo "<td>" . $query['service_price'] . "</td>";
+                                                echo "</tr>";
+                                            }
+                                        ?>
 
-                    
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
                                     </table>
 
-                    <button id="reply_btn" type="button" class="btn btn-default">View Details</button>
 
                 </div>
                               
