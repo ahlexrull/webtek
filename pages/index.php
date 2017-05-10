@@ -59,7 +59,7 @@ function echoActiveClassIfRequestMatches($requestUri)
                                     <?php
                                     $datenow = date("Y-m");
                                     require_once 'fragments/connection.php';
-                                    $query = $pdo->prepare("SELECT * FROM service_request WHERE request_status = 01"); 
+                                    $query = $pdo->prepare("SELECT * FROM service_request WHERE request_status = 01 and start_servicing > curdate()"); 
                                     $query->execute();
                                     $result = $query->fetchAll();
                                     echo count($result);                                          
@@ -137,7 +137,7 @@ function echoActiveClassIfRequestMatches($requestUri)
                                     ?> New Feedback
                                 </strong>
                             </h4>
-                            <center><a href="feedback.php" class="btn btn-primary">View Feedback</a></center>
+                            <center><a href="new-feedback.php" class="btn btn-primary">View Feedback</a></center>
                         </div>
 
                      </div>
