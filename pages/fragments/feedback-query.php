@@ -22,12 +22,13 @@
         echo "<td>" .$row['feedback_date'] ."</td>";
         echo "<td>" .$row['ranking'] ."</td>";
         if($status == 1 or $status == 2){
-            echo "<td>" .'<button type="button" class="details-modal btn btn-default">Details</button>' ."</td>";                        
-        }elseif($status == 3){
             echo "<td>" 
-            .'<button type="button" class="details-modal btn btn-default">Reply</button>' 
+            .'<a class="btn btn-default" data-toggle="modal" href="#myModal" id="modellink">Reply</a>' 
             .'<button type="button" class="details-modal btn btn-default">Done</button>' 
-            ."</td>";          
+            ."</td>"; 
+                                    
+        }elseif($status == 3){
+            echo "<td>" .'<a class="btn btn-default" data-toggle="modal" href="#myModal" id="modellink">Details</a>' ."</td>";       
         } 
         echo "</tr>";
     }

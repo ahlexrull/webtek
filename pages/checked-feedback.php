@@ -37,9 +37,13 @@
                     <table class="table table-striped table-border table-hover">
                         <?php   
                             $status = 2;
-                            include 'fragments/feedback-query.php';    
+                            include 'fragments/feedback-query.php';
+                            
                         ?>   
                     </table>
+                    <div class="modal-container">
+                        
+                    </div>
                 </div>            
             </div>
         </div>

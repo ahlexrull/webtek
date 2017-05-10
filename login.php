@@ -55,11 +55,11 @@
 <head>
       <title>Pet Services</title><meta charset="UTF-8" />
     
-      <link rel="stylesheet" href="assets/css/style.css">
+      <link rel="stylesheet" href="pages/assets/css/style.css">
 
       <style type="text/css"> 
       body {
-        background-image: url("assets/img/background.jpg");
+        background-image: url("pages/assets/img/background.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         background-color: rgb(0,0,0); /* Black fallback color */

@@ -1,5 +1,5 @@
     
-    <div id="" class="reply_modal modal fade">
+    <div id="myModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
